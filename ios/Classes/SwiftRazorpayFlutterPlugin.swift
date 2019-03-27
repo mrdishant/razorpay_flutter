@@ -18,9 +18,7 @@ public class SwiftRazorpayFlutterPlugin: NSObject, FlutterPlugin,RazorpayPayment
   
     internal func showPaymentForm(call: FlutterMethodCall){
         var razorpay: Razorpay!
-        //razorpay = Razorpay.initWithKey("rzp_live_MQdGY7MHT10ZNd", andDelegate: self)
-        
-        
+
         let arguments=call.arguments as! NSDictionary
         let keyId=arguments["keyId"] as! String
         let txnId=arguments["txnId"] as! String
@@ -61,14 +59,13 @@ public class SwiftRazorpayFlutterPlugin: NSObject, FlutterPlugin,RazorpayPayment
         
         hashMap["status"] = 1
         hashMap["paymentId"] = ""
+        hashMap["error"] = true
+        hashMap["errorDescription"] = str
         
         
         self.resultBack!(hashMap);
         
-        //        let alertController = UIAlertController(title: "FAILURE", message: str, preferredStyle: UIAlertController.Style.alert)
-        //        let cancelAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-        //        alertController.addAction(cancelAction)
-        //        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+
     }
     
     public func onPaymentSuccess(_ payment_id: String){
@@ -80,15 +77,11 @@ public class SwiftRazorpayFlutterPlugin: NSObject, FlutterPlugin,RazorpayPayment
         
         hashMap["status"] = 3
         hashMap["paymentId"] = payment_id
+        hashMap["error"] = false
+        hashMap["errorDescription"] = ""
         
         self.resultBack!(hashMap)
-        
-        
-        
-        //        let alertController = UIAlertController(title: "SUCCESS", message: "Payment Id \(payment_id)", preferredStyle: UIAlertController.Style.alert)
-        //        let cancelAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-        //        alertController.addAction(cancelAction)
-        //        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+
     }
     
 }

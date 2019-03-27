@@ -12,7 +12,7 @@ import com.razorpay.PaymentResultListener;
 
 import org.json.JSONObject;
 
-public class RazorPayTestActivirty extends AppCompatActivity implements PaymentResultListener {
+public class RazorPayTestActivity extends AppCompatActivity implements PaymentResultListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class RazorPayTestActivirty extends AppCompatActivity implements PaymentR
         /**
          * Reference to current activity
          */
-        final Activity activity = RazorPayTestActivirty.this;
+        final Activity activity = RazorPayTestActivity.this;
 
         /**
          * Pass your payment options to the Razorpay Checkout as a JSONObject
@@ -164,6 +164,8 @@ public class RazorPayTestActivirty extends AppCompatActivity implements PaymentR
         Intent intent = new Intent();
         intent.putExtra("status", 3);
         intent.putExtra("paymentId",s);
+        intent.putExtra("errorDescription","");
+        intent.putExtra("error",false);
         setResult(101, intent);
         finish();
 
@@ -179,6 +181,8 @@ public class RazorPayTestActivirty extends AppCompatActivity implements PaymentR
         Intent intent = new Intent();
         intent.putExtra("status", 1);
         intent.putExtra("paymentId","");
+        intent.putExtra("errorDescription",s);
+        intent.putExtra("error",true);
         setResult(101, intent);
         finish();
 

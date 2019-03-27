@@ -51,6 +51,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
 //      _platformVersion = platformVersion;
       print(platformVersion);
+      _platformVersion = platformVersion.toString();
     });
   }
 
@@ -59,10 +60,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('RazorPay Example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Text('Result : $_platformVersion\n'),
         ),
       ),
     );

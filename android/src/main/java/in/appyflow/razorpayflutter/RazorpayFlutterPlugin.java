@@ -45,6 +45,8 @@ public class RazorpayFlutterPlugin implements MethodCallHandler {
 
           hashMap.put("status", data.getIntExtra("status", 2));
           hashMap.put("paymentId",data.getStringExtra("paymentId"));
+          hashMap.put("error",data.getBooleanArrayExtra("error"));
+          hashMap.put("errorDescription",data.getStringExtra("errorDescription"));
 
           resultBack.success(hashMap);
 
@@ -54,6 +56,9 @@ public class RazorpayFlutterPlugin implements MethodCallHandler {
 
           hashMap.put("status", 1);
           hashMap.put("paymentId","");
+
+          hashMap.put("error",true);
+          hashMap.put("errorDescription","");
 
           resultBack.success(hashMap);
 
@@ -131,7 +136,7 @@ public class RazorpayFlutterPlugin implements MethodCallHandler {
 //            },null);
 
 
-      activity.startActivityForResult(new Intent(activity, RazorPayTestActivirty.class).putExtra("txnId", txnId)
+      activity.startActivityForResult(new Intent(activity, RazorPayTestActivity.class).putExtra("txnId", txnId)
                       .putExtra("userPhone", phone)
                       .putExtra("name", name)
                       .putExtra("image", image)
